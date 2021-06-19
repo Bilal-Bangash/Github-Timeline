@@ -18,17 +18,19 @@ username. (Implement useNotification custom hook for showing notification)
 5. Users can see the repo details on clicking timeline activity. The details page should show
 following details of the repo e.g name, description, URL, forksCount, watcherCount,
 stars, created at, language, updated at, open_issues and size etc.
-Bonus Feature
-● Users can filter timeline activities by month and year.
+# Bonus Feature
+1. Users can filter timeline activities by month and year.
 Pages
-● Main Page (Search + Timeline)
-● Repo detail Page
-Useful links and resources
+2. Main Page (Search + Timeline)
+3. Repo detail Page
+
+# Useful links and resources
 GitHub offers two API's you may use to access repo data. You may also choose to use an NPM
 package to access the GitHub API. Documentation for the GitHub API can be found at:
-● GitHub REST API V3: https://developer.github.com/v3/
-● GitHub GraphQL API V4: https://developer.github.com/v4/
-Example Timeline projects
-● CSS Timeline : https://codepen.io/NilsWe/pen/FemfK
-● Vertical Timeline With CSS and JS: https://codepen.io/tutsplus/pen/QNeJgR
-Time Duration: 4 Days (Max)
+#### GitHub REST API V3: https://developer.github.com/v3/
+#### GitHub GraphQL API V4: https://developer.github.com/v4/
+
+# Example Timeline projects
+
+#### CSS Timeline : https://codepen.io/NilsWe/pen/FemfK
+#### Vertical Timeline With CSS and JS: https://codepen.io/tutsplus/pen/QNeJgR
