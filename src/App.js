@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import { ToastContainer ,toast as showToast } from 'react-toastify';
+import { useQuery } from './hooks';
+import { Api } from './services';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
+  const { isLoading } = useQuery(Api.githubTimeline.getTimelineResponse, {
+    onError: () => {
+      console.log('%cError','color:red;font-size:30px;');
+      showToast.error('Invalid UserName')
+    },
+    onComplete: (profile) => {
+      console.log('%cProfile','color:green;font-size:30px;',profile);
+    },
+    variables:'Bilal-Bangash123'
+  });
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      Git Timeline
+      <ToastContainer hideProgressBar={false} />
     </div>
   );
 }
