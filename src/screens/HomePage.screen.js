@@ -1,5 +1,4 @@
 import { useState, Fragment } from 'react';
-import { toast as showToast } from 'react-toastify';
 import { useQuery } from '../hooks';
 import { Api } from '../services';
 import { ListItem } from '../components';
@@ -9,13 +8,9 @@ function HomeScreen() {
   const { fetch, isLoading, error, data } = useQuery(
     Api.githubTimeline.getTimelineResponse,
     {
-      onError: () => {
-        // showToast.error('User not found');
-      },
       variables: userId,
     }
   );
-  console.log('%ceror', 'color:green;font-size:30px;', error);
   return (
     <Fragment>
       <input
