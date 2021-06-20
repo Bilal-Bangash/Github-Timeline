@@ -18,15 +18,17 @@ function HomeScreen() {
     data || JSON.parse(localStorage.getItem('user-timeline'));
   return (
     <Fragment>
-      <input
-        type='text'
-        placeholder='Enter Git User ID....'
-        value={userId}
-        onChange={(e) => setUserId(e.target.value)}
-      />
-      <button type='submit' onClick={() => fetch()}>
-        Generate
-      </button>
+      <div className='container'>
+        <input
+          type='text'
+          placeholder='Enter Git User ID....'
+          value={userId}
+          onChange={(e) => setUserId(e.target.value)}
+        />
+        <button type='submit' onClick={() => fetch()}>
+          Generate
+        </button>
+      </div>
       {!error && userTimeline && (
         <ul className='timeline'>
           {userTimeline?.map((gitRepo, index) => (
