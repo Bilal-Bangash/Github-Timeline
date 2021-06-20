@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const useQuery = (
   request,
@@ -10,9 +11,9 @@ const useQuery = (
 
   const [data, setData] = useState(null);
 
-  const fetch=()=>{
-    onRequest()
-  }
+  const fetch = () => {
+    onRequest();
+  };
 
   const onRequest = async () => {
     setLoading(true);
@@ -36,7 +37,15 @@ const useQuery = (
     setLoading(false);
   };
 
-  return { fetch,isLoading, error, data };
+  return { fetch, isLoading, error, data };
 };
 
-export default useQuery
+useQuery.propTypes = {
+  onError: PropTypes.func,
+  onComplete: PropTypes.func,
+  variables:
+    PropTypes.bool || PropTypes.string || PropTypes.object || PropTypes.array,
+  request: PropTypes.func.isRequired,
+};
+
+export default useQuery;

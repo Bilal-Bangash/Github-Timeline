@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const ListItem = ({
   item: { name = '', description = '', created_at = '' },
   index,
@@ -17,6 +19,13 @@ const ListItem = ({
       </div>
     </li>
   );
+};
+
+ListItem.propTypes = {
+  name: PropTypes.string,
+  description: PropTypes.string,
+  created_at: PropTypes.string,
+  index: PropTypes.number,
 };
 
 export default ListItem;
