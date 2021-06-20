@@ -1,24 +1,19 @@
-import './App.css';
-import { ToastContainer ,toast as showToast } from 'react-toastify';
-import { useQuery } from './hooks';
-import { Api } from './services';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { HomeScreen } from './screens';
+import './App.css';
 
 function App() {
-  const { isLoading } = useQuery(Api.githubTimeline.getTimelineResponse, {
-    onError: () => {
-      console.log('%cError','color:red;font-size:30px;');
-      showToast.error('Invalid UserName')
-    },
-    onComplete: (profile) => {
-      console.log('%cProfile','color:green;font-size:30px;',profile);
-    },
-    variables:'Bilal-Bangash123'
-  });
   return (
-    <div className="App">
-      Git Timeline
+    <div className='App'>
+      <b>GIT Timeline</b>
       <ToastContainer hideProgressBar={false} />
+      <Router>
+        <Switch>
+          <Route exact path='/' component={HomeScreen} />
+        </Switch>
+      </Router>
     </div>
   );
 }

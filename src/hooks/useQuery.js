@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const useQuery = (
   request,
@@ -10,7 +10,9 @@ const useQuery = (
 
   const [data, setData] = useState(null);
 
-  useEffect(() => onRequest(), []);
+  const fetch=()=>{
+    onRequest()
+  }
 
   const onRequest = async () => {
     setLoading(true);
@@ -34,7 +36,7 @@ const useQuery = (
     setLoading(false);
   };
 
-  return { isLoading, error, data };
+  return { fetch,isLoading, error, data };
 };
 
 export default useQuery
