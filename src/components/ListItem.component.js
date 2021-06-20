@@ -1,14 +1,24 @@
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 
 const ListItem = ({
-  item: { name = '', description = '', created_at = '', full_name },
+  item: { name = '', description = '', created_at = '' },
+  item,
   index,
 }) => {
+  const history = useHistory();
+  const repoDetail = () => {
+    history.push({
+      pathname: '/repo-detail',
+      state: { item },
+    });
+  };
+
   return (
     <li>
       <div
         className={index % 2 === 0 ? 'direction-l' : 'direction-r'}
-        onClick={() => fetch()}>
+        onClick={() => repoDetail()}>
         <div className='flag-wrapper'>
           <span className='flag'>{name}</span>
           <span className='time-wrapper'>
@@ -25,7 +35,6 @@ const ListItem = ({
 
 ListItem.propTypes = {
   name: PropTypes.string,
-  full_name: PropTypes.string.isRequired,
   description: PropTypes.string,
   created_at: PropTypes.string,
   index: PropTypes.number,

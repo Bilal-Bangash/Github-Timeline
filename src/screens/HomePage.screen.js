@@ -8,9 +8,15 @@ function HomeScreen() {
   const { fetch, isLoading, error, data } = useQuery(
     Api.githubTimeline.getTimelineResponse,
     {
+      onComplete: (data) => {
+        localStorage.setItem('user-timeline', JSON.stringify(data));
+      },
       variables: userId,
     }
   );
+  const userTimeline =
+    data || JSON.parse(localStorage.getItem('user-timeline'));
+  console.log('%cuserTime', 'color:green;font-size:30px;', userTimeline);
   return (
     <Fragment>
       <input
@@ -22,10 +28,9 @@ function HomeScreen() {
       <button type='submit' onClick={() => fetch()}>
         Generate
       </button>
-      {isLoading && <div>Fetching Data</div>}
-      {!isLoading && !error && data && (
+      {!error && userTimeline && (
         <ul className='timeline'>
-          {data?.map((gitRepo, index) => (
+          {userTimeline?.map((gitRepo, index) => (
             <ListItem item={gitRepo} key={index} index={index} />
           ))}
         </ul>
