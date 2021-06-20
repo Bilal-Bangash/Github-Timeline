@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 
 const ListItem = ({
-  item: { name = '', description = '', created_at = '' },
+  item: { name = '', description = '', created_at = '', full_name },
   index,
 }) => {
   return (
     <li>
-      <div className={index % 2 === 0 ? 'direction-l' : 'direction-r'}>
+      <div
+        className={index % 2 === 0 ? 'direction-l' : 'direction-r'}
+        onClick={() => fetch()}>
         <div className='flag-wrapper'>
           <span className='flag'>{name}</span>
           <span className='time-wrapper'>
@@ -23,6 +25,7 @@ const ListItem = ({
 
 ListItem.propTypes = {
   name: PropTypes.string,
+  full_name: PropTypes.string.isRequired,
   description: PropTypes.string,
   created_at: PropTypes.string,
   index: PropTypes.number,

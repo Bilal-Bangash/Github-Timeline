@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { HomeScreen } from './screens';
+import { HomeScreen, RepoDetailScreen } from './screens';
 import './App.css';
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path='/' component={HomeScreen} />
+          <Route exact path='/repo-detail' component={RepoDetailScreen} />
         </Switch>
       </Router>
     </div>
