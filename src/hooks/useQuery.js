@@ -23,14 +23,14 @@ const useQuery = (
     await request(variables)
       .then((response) => {
         const { data } = response || {};
-
+        console.log('%cdata', 'color:green;font-size:30px;', data);
         setData(data);
 
         onComplete(data);
       })
       .catch((error) => {
         setError(error);
-
+        console.log('%cerror is', 'color:red;font-size:30px;', error);
         onError(error);
       });
 

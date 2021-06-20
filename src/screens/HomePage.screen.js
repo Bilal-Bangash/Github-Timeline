@@ -6,16 +6,12 @@ import { ListItem } from '../components';
 
 function HomeScreen() {
   const [userId, setUserId] = useState('Bilal-Bangash');
-  const [timeline, setTimeline] = useState([]);
-  const { fetch, isLoading } = useQuery(
+  const { fetch, isLoading, data } = useQuery(
     Api.githubTimeline.getTimelineResponse,
     {
-      onError: () => {
+      onError: (error) => {
+        console.log('%cerror', 'color:red;font-size:30px;', error);
         showToast.error('Invalid UserName');
-      },
-      onComplete: (profile) => {
-        console.log('%cProfile', 'color:green;font-size:30px;', profile);
-        setTimeline(profile);
       },
       variables: userId,
     }
@@ -31,9 +27,9 @@ function HomeScreen() {
       <button type='submit' onClick={() => fetch()}>
         Generate
       </button>
-      {!isLoading && timeline && (
+      {!isLoading && data && (
         <ul className='timeline'>
-          {timeline?.map((gitRepo, index) => (
+          {data?.map((gitRepo, index) => (
             <ListItem item={gitRepo} key={index} index={index} />
           ))}
         </ul>
