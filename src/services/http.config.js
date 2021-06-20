@@ -27,8 +27,8 @@ const responseHandler = (response) => {
 
 //Response error
 const responseError = (error) => {
-  if (error.message === 'Network Error') {
-    showToast.error('No internet connection');
+  if (error.response.status === 404) {
+    showToast.error(error.response.data.message);
     return Promise.reject(error);
   }
 
