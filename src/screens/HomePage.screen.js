@@ -16,7 +16,6 @@ function HomeScreen() {
   );
   const userTimeline =
     data || JSON.parse(localStorage.getItem('user-timeline'));
-  console.log('%cuserTime', 'color:green;font-size:30px;', userTimeline);
   return (
     <Fragment>
       <input
