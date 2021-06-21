@@ -1,7 +1,7 @@
 import { useState, Fragment } from 'react';
 import { useQuery } from '../hooks';
 import { Api } from '../services';
-import { ListItem } from '../components';
+import { ListItem, FilterRepos } from '../components';
 
 function HomeScreen() {
   const [userId, setUserId] = useState('Bilal-Bangash');
@@ -50,28 +50,8 @@ function HomeScreen() {
       </div>
       {!error && userTimeline && (
         <div>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'flex-end',
-              marginTop: '20px',
-            }}>
-            <input
-              type='text'
-              placeholder='Filter By Month'
-              // value={userId}
-              name='month'
-              onChange={handleFilter}
-            />
-            <input
-              type='text'
-              placeholder='Filter By Year'
-              // value={userId}
-              name='year'
-              onChange={handleFilter}
-            />
-          </div>
           <ul className='timeline'>
+            <FilterRepos handleFilter={handleFilter} />
             {userTimeline?.map((gitRepo, index) => (
               <ListItem item={gitRepo} key={index} index={index} />
             ))}
