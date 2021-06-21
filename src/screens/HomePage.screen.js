@@ -4,7 +4,7 @@ import { Api } from '../services';
 import { ListItem, FilterRepos } from '../components';
 
 function HomeScreen() {
-  const [userId, setUserId] = useState('Bilal-Bangash');
+  const [userId, setUserId] = useState('');
   const [userTimeline, setUserTimeline] = useState(
     JSON.parse(localStorage.getItem('user-timeline')) || []
   );
