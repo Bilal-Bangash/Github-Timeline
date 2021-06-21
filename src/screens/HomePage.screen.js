@@ -1,5 +1,5 @@
 import { useState, Fragment } from 'react';
-import { useQuery } from '../hooks';
+import { useQuery, useNotification } from '../hooks';
 import { Api } from '../services';
 import { ListItem, FilterRepos } from '../components';
 
@@ -8,10 +8,15 @@ function HomeScreen() {
   const [userTimeline, setUserTimeline] = useState(
     JSON.parse(localStorage.getItem('user-timeline')) || []
   );
+  const { showError, showSuccess } = useNotification();
   const { fetch, error } = useQuery(Api.githubTimeline.getTimelineResponse, {
     onComplete: (data) => {
       setUserTimeline(data);
+      showSuccess('Successfully Imported Data');
       localStorage.setItem('user-timeline', JSON.stringify(data));
+    },
+    onError: (error) => {
+      showError(error);
     },
     variables: userId,
   });
