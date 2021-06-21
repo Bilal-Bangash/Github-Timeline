@@ -380,7 +380,6 @@ input {
   border: 1px solid black;
   border-radius: 40px;
   padding: 20px;
-  margin-right: 20px;
   outline: none;
   box-sizing: border-box;
 }
@@ -391,7 +390,7 @@ li {
 
 button {
   display: block;
-  width: 50%;
+  width: 40%;
   padding: 0;
   border: none;
   outline: none;
